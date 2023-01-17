@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <section class="container">
+
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, non.</h1>
+        <div id="minha-div"></div>
+        <!-- aqui-->
+
+    </section>
+
+    <script>
+
+        /*const div = document.querySelector('#minha-div');
+
+        const elementos = [
+            {tag: 'p', texto: 'frase 1'},
+            {tag: 'div', texto: 'frase 2'},
+            {tag: 'footer', texto: 'frase3'},
+            {tag: 'section', texto: 'frase4'},
+        ];
+
+        for (let i = 0; i < elementos.length; i ++) {
+            div.innerHTML += `<${elementos[i].tag}>${elementos[i].texto}</${elementos[i].tag}>`;
+            console.log(elementos[i].tag);
+            console.log(elementos[i].texto);
+        }  
+        minha resolucao!*/
+
+        const elementos = [
+            {tag: 'p', texto: 'frase 1'},
+            {tag: 'div', texto: 'frase 2'},
+            {tag: 'footer', texto: 'frase3'},
+            {tag: 'section', texto: 'frase4'},
+        ];
+        const container = document.querySelector('.container');
+        const div = document.createElement('div')
+
+        for (let i = 0;i < elementos.length; i++) {
+            let {tag, texto} = elementos[i];
+            let tagCriada = document.createElement(tag);
+            tagCriada.innerText = texto;
+            div.appendChild(tagCriada);
+        }
+
+        container.appendChild(div)
+    </script>
+
+</body>
+</html>
