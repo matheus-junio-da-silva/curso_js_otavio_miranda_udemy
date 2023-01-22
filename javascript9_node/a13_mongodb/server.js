@@ -1,12 +1,14 @@
+require('dotenv').config();
+
 const express = require("express"); // nao precisa de caminho, pois esta dentro do node modules
 const app = express();
 const mongoose = require('mongoose');
-const connectionString = 'mongodb+srv://matheusjunio:99MAaa87bbb999@cursojs01.1pqrm5w.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log('conectei à base de dados')
         app.emit('pronto')
-    });
+    })
+    .catch(e => console.log(e));
 mongoose.set('strictQuery', true);
 const routes = require('./routes');
 const path = require('path');
