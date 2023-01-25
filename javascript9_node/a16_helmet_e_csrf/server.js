@@ -16,12 +16,14 @@ const flash = require('connect-flash');
 mongoose.set('strictQuery', true);
 const routes = require('./routes');
 const path = require('path');
+const helmet = require('helmet');
+const csrf = require('csurf');
 // associacao via desestruturacao
-const {middlewareGlobal} = require('./src/middlewares/middleware')
+const {middlewareGlobal, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware');
 // post = criar
 // get = ler
 // put = atualizar
-
+app.use(helmet());
 app.use(
     express.urlencoded(
         {
@@ -49,8 +51,10 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 // nossos propios middlewares
+app.use(csrf());
 app.use(middlewareGlobal);
-
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
 app.use(routes);
 
 // a conexao so vai acontecer se for emitido o sinal pronto
