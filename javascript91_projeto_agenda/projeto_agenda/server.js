@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require("express"); // nao precisa de caminho, pois esta dentro do node modules
 const app = express();
 const mongoose = require('mongoose');
@@ -8,11 +7,9 @@ mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifie
         app.emit('pronto')
     })
     .catch(e => console.log(e));
-
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
-
 mongoose.set('strictQuery', true);
 const routes = require('./routes');
 const path = require('path');
