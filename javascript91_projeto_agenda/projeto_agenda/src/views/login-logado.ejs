@@ -6,8 +6,14 @@
         <div class="col-lg-2"></div>
 
         <div class="col-lg-8 my-3">
-            <h1 class="text-center">Criar conta ou entrar</h1>
-            <p class="text-center lead">Faça login ou crie sua conta abaixo.</p>
+            <h1 class="text-center">
+                Olá 
+                <% let userEmail = user.email; %>
+                <% userEmail = userEmail.split("@")[0]; %> 
+                <%= userEmail %> 
+                 
+            </h1>
+            <p class="text-center lead">Você precisa sair para criar outra conta.</p>
             
             <%- include('includes/messages') %> 
 
